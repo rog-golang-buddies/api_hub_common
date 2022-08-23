@@ -1,4 +1,4 @@
-package apiSpecDoc
+package apispecdoc
 
 // Type represents type of parsed API
 type Type int

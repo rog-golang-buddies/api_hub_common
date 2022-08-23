@@ -1,4 +1,4 @@
-package apiSpecDoc
+package apispecdoc
 
 // ApiSpecDoc represents full API Specification document
 // with all required data to view and execute requests
