@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+option go_package = "github.com/rog-golang-buddies/api_hub_common/apispecproto";
+
+message Page {
+  int32 total = 1;
+  int32 current = 2;
+  int32 per_page = 3;
+}
+
+//Short API specification document representation
+message ShortASD {
+  //db id of the ASD model
+  uint32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+enum SchemaType {
+  UNKNOWN = 0;
+  NOT_DEFINED = 1;
+  OBJECT = 2;
+  INTEGER = 3;
+  BOOLEAN = 4;
+  NUMBER = 5;
+  STRING = 6;
+  DATE = 7;
+  ARRAY = 8;
+  MAP = 9;
+  ONE_OF = 10;
+  ANY_OF = 11;
+  ALL_OF = 12;
+  NOT = 13;
+}
+
+message Schema {
+  string key = 1;
+  SchemaType type = 2;
+  string description = 3;
+  repeated Schema fields = 4;
+}
+
+message RequestBody {
+  message MediaTypeObject {
+    string media_type = 1;
+    Schema schema = 2;
+  }
+
+  string description = 1;
+  bool required = 2;
+  repeated MediaTypeObject content = 3;
+}
+
+message Server {
+  string url = 1;
+  string description = 2;
+}
+
+enum ParameterType {
+  QUERY = 0;
+  HEADER = 1;
+  PATH = 2;
+  COOKIE = 3;
+}
+
+message Parameter {
+  string name = 1;
+  ParameterType in = 2;
+  string description = 3;
+  bool required = 4;
+  Schema schema = 5;
+}
+
+message ExternalDoc {
+  string description = 1;
+  string url = 2;
+}
+
+enum MethodType {
+  CONNECT = 0;
+  GET = 1;
+  PUT = 2;
+  POST = 3;
+  DELETE = 4;
+  OPTIONS = 5;
+  HEAD = 6;
+  PATCH = 7;
+  TRACE = 8;
+}
+
+message ApiMethod {
+  string path = 1;
+  //Name of API method
+  string name = 2;
+  //Description of API method if exists
+  string description = 3;
+  //Type represents type of request method
+  MethodType type = 4;
+  RequestBody request_body = 5;
+  repeated Server servers = 6;
+  repeated Parameter parameters = 7;
+  ExternalDoc external_doc = 8;
+}
+
+message Group {
+  string name = 1;
+  string description = 2;
+  repeated ApiMethod methods = 3;
+}
+
+enum Type {
+  OPEN_API = 0;
+}
+
+message FullASD {
+  uint32 id = 1;
+  string title = 2;
+  string description = 3;
+  Type type = 4;
+  repeated Group groups = 5;
+  repeated ApiMethod methods = 6;
+}

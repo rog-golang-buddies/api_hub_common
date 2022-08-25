@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+//generate
+//protoc --go_out=./apispecproto --go_opt=paths=source_relative --go-grpc_out=./apispecproto --go-grpc_opt=paths=source_relative --proto_path=./protobuf/asdstore ./protobuf/asdstore/*.proto
+
+import "asd_model.proto";
+
+option go_package = "github.com/rog-golang-buddies/api_hub_common/apispecproto";
+
+message SearchRequest {
+  string search = 1;
+}
+
+message SearchResponse {
+  repeated ShortASD short_spec_docs = 1;
+  Page page = 2;
+}
+
+message GetRequest {
+  int32 id = 1;
+}
+
+message GetResponse {
+  FullASD api_spec_doc = 1;
+}
+
+service ApiSpecDoc {
+  //Search page of short API specification docs
+  rpc Search(SearchRequest) returns (SearchResponse);
+  //Get full API specification
+  rpc Get(GetRequest) returns (GetResponse);
+}
