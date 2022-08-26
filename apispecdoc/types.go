@@ -1,10 +1,10 @@
 package apispecdoc
 
 // Type represents type of parsed API
-type Type int
+type Type string
 
 const (
-	TypeOpenApi Type = iota
+	TypeOpenApi Type = "OPEN_API"
 )
 
 // SchemaType is the type of field.
