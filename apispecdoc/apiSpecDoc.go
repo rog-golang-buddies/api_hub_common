@@ -24,6 +24,9 @@ type ApiSpecDoc struct {
 
 	//Origin file hash sum
 	Md5Sum string
+
+	//Original file url
+	Url string
 }
 
 // Group represents some grouping rule
