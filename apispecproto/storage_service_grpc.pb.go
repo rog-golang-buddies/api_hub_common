@@ -22,7 +22,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ApiSpecDocClient interface {
+	// Search page of short API specification docs
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
+	// Get full API specification
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 }
 
@@ -56,7 +58,9 @@ func (c *apiSpecDocClient) Get(ctx context.Context, in *GetRequest, opts ...grpc
 // All implementations must embed UnimplementedApiSpecDocServer
 // for forward compatibility
 type ApiSpecDocServer interface {
+	// Search page of short API specification docs
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
+	// Get full API specification
 	Get(context.Context, *GetRequest) (*GetResponse, error)
 	mustEmbedUnimplementedApiSpecDocServer()
 }

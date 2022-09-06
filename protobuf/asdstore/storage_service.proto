@@ -9,6 +9,8 @@ option go_package = "github.com/rog-golang-buddies/api_hub_common/apispecproto";
 
 message SearchRequest {
   string search = 1;
+  optional int32 page = 2;
+  optional int32 per_page = 3;
 }
 
 message SearchResponse {
