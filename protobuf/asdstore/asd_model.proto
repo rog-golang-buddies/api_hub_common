@@ -17,7 +17,7 @@ message ShortASD {
 }
 
 enum SchemaType {
-  UNKNOWN = 0;
+  UNKNOWN_SCHEMA = 0;
   NOT_DEFINED = 1;
   OBJECT = 2;
   INTEGER = 3;
@@ -61,6 +61,7 @@ enum ParameterType {
   HEADER = 1;
   PATH = 2;
   COOKIE = 3;
+  UNKNOWN_PARAM = 4;
 }
 
 message Parameter {
@@ -86,6 +87,7 @@ enum MethodType {
   HEAD = 6;
   PATCH = 7;
   TRACE = 8;
+  UNKNOWN_METHOD = 9;
 }
 
 message ApiMethod {
@@ -110,6 +112,7 @@ message Group {
 
 enum Type {
   OPEN_API = 0;
+  UNKNOWN_API = 1;
 }
 
 message FullASD {
