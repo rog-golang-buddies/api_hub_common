@@ -19,7 +19,7 @@ message SearchResponse {
 }
 
 message GetRequest {
-  int32 id = 1;
+  uint32 id = 1;
 }
 
 message GetResponse {
