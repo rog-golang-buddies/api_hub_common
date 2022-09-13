@@ -57,11 +57,11 @@ message Server {
 }
 
 enum ParameterType {
-  QUERY = 0;
-  HEADER = 1;
-  PATH = 2;
-  COOKIE = 3;
-  UNKNOWN_PARAM = 4;
+  UNKNOWN_PARAM = 0;
+  QUERY = 1;
+  HEADER = 2;
+  PATH = 3;
+  COOKIE = 4;
 }
 
 message Parameter {
@@ -78,16 +78,16 @@ message ExternalDoc {
 }
 
 enum MethodType {
-  CONNECT = 0;
-  GET = 1;
-  PUT = 2;
-  POST = 3;
-  DELETE = 4;
-  OPTIONS = 5;
-  HEAD = 6;
-  PATCH = 7;
-  TRACE = 8;
-  UNKNOWN_METHOD = 9;
+  UNKNOWN_METHOD = 0;
+  CONNECT = 1;
+  GET = 2;
+  PUT = 3;
+  POST = 4;
+  DELETE = 5;
+  OPTIONS = 6;
+  HEAD = 7;
+  PATCH = 8;
+  TRACE = 9;
 }
 
 message ApiMethod {
@@ -111,15 +111,16 @@ message Group {
 }
 
 enum Type {
-  OPEN_API = 0;
-  UNKNOWN_API = 1;
+  UNKNOWN_API = 0;
+  OPEN_API = 1;
 }
 
 message FullASD {
   uint32 id = 1;
   string title = 2;
   string description = 3;
-  Type type = 4;
-  repeated Group groups = 5;
-  repeated ApiMethod methods = 6;
+  string url = 4;
+  Type type = 5;
+  repeated Group groups = 6;
+  repeated ApiMethod methods = 7;
 }
